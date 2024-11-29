@@ -1,0 +1,41 @@
+{% extends "theme/base.html" %}
+{% block title %}Checkout{% endblock  %}
+{% block content %}
+    <div class="container mx-auto mt-10 mb-20">
+        <h1 class="text-4xl font-bold text-center text-blue-600">Check Out</h1>
+        <div class="mt-8 bg-white rounded-lg shadow-lg">
+            <table class="min-w-full border-collapse">
+                <thead>
+                    <tr class="bg-blue-500 text-white">
+                        <th class="text-left py-4 px-6 font-semibold text-sm uppercase">Products</th>
+                        <th class="text-left py-4 px-6 font-semibold text-sm uppercase">Quantity</th>
+                        <th class="text-left py-4 px-6 font-semibold text-sm uppercase">Price</th>
+                        <th class="text-left py-4 px-6 font-semibold text-sm uppercase">Total</th>
+                    </tr>
+                    <tbody>
+                        {% for item in cart_items %}
+                            <tr class="border-t">
+                                <td class="py-2 px-4 text-gray-800">{{ item.product.name }}</td>
+                                <td class="py-2 px-4 text-center">{{ item.quantity }}</td>
+                                <td class="py-2 px-4 text-right text-gray-800">{{ item.product.price }}</td>
+                                <td class="py-2 px-4 text-right text-gray-800">{{ item.total|floatformat:2 }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </thead>
+            </table>
+        </div>
+            <div class="mt-6 text-right">
+                <p class="text-xl font-bold">Total: ${{ total_price }}</p>
+                <p class="text-sm text-gray-600 mt-1">* Taxes and delivery charges are included</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="mt-4 px-8 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600">
+                        Place Order
+                    </button>
+                </form>
+            </div>
+        
+    </div>
+    {% include "theme/footer.html" %}
+{% endblock %}

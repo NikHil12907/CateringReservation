@@ -1,0 +1,14 @@
+{% extends "theme/base.html" %}
+{% block title %}Delete Product{% endblock title %}
+{% block content %}
+    <h1 class="text-3xl font-bold text-center mt-6 mb-15">Delete Product</h1>
+    <div class="container mx-auto mt-6 text-center">
+        <p>Are you sure you want to delete <strong>{{ product.name }}</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="Are you sure you want to delete <strong>{{ product.name }}</strong>?">Yes, Delete</button>
+            <a href="{% url "manage_products" %}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</a>
+        </form>
+    </div>
+    {% include "theme/footer.html" %}
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "theme/base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+        {% comment %} Hero {% endcomment %}
+        <div class="container mx-auto px-6 py-12 text-center lg:text-left">
+            <div class="lg:flex items-center">
+                <div class="lg:w-1/2">
+                    <h1 class="text-4xl md:text-5xl font-extrabold mb-4"> Welcome to <span class="text-yellow-300">Catering System</span></h1>
+                    <p class="text-lg mb-6">
+                        Discover delicious food, reserve your orders, and explore a world of taste at your fingertips!
+                    </p>
+                </div>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                    <a href="{% url "product_list" %}" class="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold px-6 py-3 rounded-lg shadow-md">Explore Products</a>
+                    <a href="{% url "register" %}" class="bg-gray-800 hover:bg-gray-900 text-white font-bold px-6 py-3 rounded-lg shadow-md">Get Started</a>
+                </div>
+            </div>
+        </div>
+        {% comment %} <div class="lg:w-1/2 mt-10 lg:mt-0 text-center">
+            <div class="text-6xl text-white mb-6">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </div> {% endcomment %}
+    </div>
+    <div class="container mx-auto px-6 py-12">
+        <h2 class="text-3xl font-extrabold text-center text-gray-800 mb-8">
+            Why Chose Us?
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                <svg class="w-16 h-16 mx-auto text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 3a2 2 0 00-2 2v1h16V5a2 2 0 00-2-2H4z"></path>
+                    <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zm-3 2a1 1 0 112 0 1 1 0 01-2 0z" clip-rule="evenodd"></path>
+                </svg>
+                <h3 class="text-xl font-bold text-gray-700 mt-4">Convenient Ordering</h3>
+                <p class="text-gray-600 mt-2">Easily browse and order your favorite dishes online.</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                <svg class="w-16 h-16 mx-auto text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3 6a1 1 0 00-1 1v7a1 1 0 001 1h14a1 1 0 001-1V7a1 1 0 00-1-1H3zm12 6a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                    <path d="M8 10a1 1 0 011 1v3a1 1 0 102 0v-3a1 1 0 011-1h3a1 1 0 000-2h-3a1 1 0 01-1-1V4a1 1 0 00-2 0v3a1 1 0 01-1 1H5a1 1 0 000 2h3z"></path>
+                </svg>
+                <h3 class="text-xl font-bold text-gray-700 mt-4">Fast Delivery</h3>
+                <p class="text-gray-600 mt-2">Get your food delivered fresh and hot right to your doorstep.</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                <svg class="w-16 h-16 mx-auto text-yellow-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 3a1 1 0 000 2h10a1 1 0 100-2H5z"></path>
+                    <path fill-rule="evenodd" d="M3 6a1 1 0 00-1 1v7a1 1 0 001 1h14a1 1 0 001-1V7a1 1 0 00-1-1H3zm12 6a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                </svg>
+                <h3 class="text-xl font-bold text-gray-700 mt-4">Secure Payments</h3>
+                <p class="text-gray-600 mt-2">Pay securely online with multiple payment options.</p>
+            </div>
+        </div>
+    </div>
+        <div class="bg-blue-600 text-white py-12">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4">Ready to Taste the Best</h2>
+                <p class="text-lg mb-6">Join us today and explore a world of delicious catering options.</p>
+                <a href="{% url "register" %}" class="px-8 py-4 bg-yellow-400 text-blue-900 font-bold rounded-lg shadow hover:bg-yellow-500">Sign Up now</a>
+            </div>
+        </div>
+
+        {% include "theme/footer.html" %}
+{% endblock %}

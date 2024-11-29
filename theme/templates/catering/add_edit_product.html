@@ -1,0 +1,82 @@
+{% extends "theme/base.html" %}
+{% block title %}Add Or Edit Product{% endblock %}
+{% block content %}
+    <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-12 mb-10">
+        <div class="container mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-extrabold text-white mb-6"> {{ action }} Product</h2>
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% comment %} Name {% endcomment %}
+                    <div class="mb-4">
+                        <label for="id_name" class="block text-gray-700 font-semibold">Product Name</label>
+                        <input class="w-full p-3 border border-gray-300 text-gray-800 rounded-lg focus:ring focus:ring-blue-300" required  type="text" name="name" id="id_name" value="{{ form.name.value|default:"" }}">
+                        {% if form.name.errors %}
+                            <div class="text-red-500 text-sm mt-2">
+                                {% for error in form.name.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    {% comment %} description {% endcomment %}
+                    <div class="mb-4">
+                        <label for="id_description" class="block text-gray-700 font-semibold">Product description</label>
+                        <textarea class="w-full p-3 border border-gray-300 text-gray-800 rounded-lg focus:ring focus:ring-blue-300" name="description" id="id_description" >{{ form.description.value|default:"" }}</textarea>
+                        {% if form.description.errors %}
+                            <div class="text-red-500 text-sm mt-2">
+                                {% for error in form.description.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    {% comment %} price {% endcomment %}
+                    <div class="mb-4">
+                        <label for="id_price" class="block text-gray-700 font-semibold">Product price</label>
+                        <input class="w-full p-3 border border-gray-300 text-gray-800 rounded-lg focus:ring focus:ring-blue-300" required  type="number" name="price" id="id_price" value="{{ form.price.value|default:"" }}">
+                        {% if form.price.errors %}
+                            <div class="text-red-500 text-sm mt-2">
+                                {% for error in form.price.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    {% comment %} stock {% endcomment %}
+                    <div class="mb-4">
+                        <label for="id_stock" class="block text-gray-700 font-semibold">stock</label>
+                        <input class="w-full p-3 border border-gray-300 text-gray-800 rounded-lg focus:ring focus:ring-blue-300" required  type="number" name="stock" id="id_stock" value="{{ form.stock.value|default:"" }}">
+                        {% if form.stock.errors %}
+                            <div class="text-red-500 text-sm mt-2">
+                                {% for error in form.stock.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    {% comment %} category {% endcomment %}
+                    <div class="mb-4">
+                        <label for="id_category" class="block text-gray-700 font-semibold">Product Name</label>
+                        <input class="w-full p-3 border border-gray-300 text-gray-800 rounded-lg focus:ring focus:ring-blue-300" required  type="text" name="category" id="id_category" value="{{ form.category.value|default:"" }}">
+                        {% if form.category.errors %}
+                            <div class="text-red-500 text-sm mt-2">
+                                {% for error in form.category.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" class="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow hover:bg-blue-700 w-full">Add Product</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    {% include "theme/footer.html" %}
+{% endblock %}

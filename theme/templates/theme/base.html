@@ -1,0 +1,39 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>Django Tailwind</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+		<title>{% block title %}Catering System{% endblock  %}</title>
+	</head>
+
+	<body>
+		<nav class="flex bg-blue-600 text-white p-4 ">
+			<a href="/" class="mr-4">Home</a>
+			{% if user.is_authenticated %}
+			<a href="{% url "order_history" %}" class="mr-4">My Orders</a>
+			<a href="{% url "profile" %}" class="mr-4">Profile</a>
+				{% if user.is_staff %}
+					<a href="{% url "manage_products" %}" class="mr-4">Admin Panel</a>	
+				{% endif %}
+				<a href="{% url "cart" %}" class="mr-4">View Cart</a>
+				<form action="{% url "logout" %}" method="post">{% csrf_token %}
+					<button type="submit">Log Out</button>
+				</form>
+				
+				{% else %}
+				<div class="flex">
+				<a href="{% url "login" %}" class="mr-4">Login</a>
+				<a href="{% url "register" %}" class="mr-4" >Register</a>
+				<a href="{% url "product_list" %}" class="mr-4">Explore Products</a>		
+			</div>
+				{% endif %}
+		</nav>
+		<main >
+			{% block content %}{% endblock %}
+		</main>
+	</body>
+</html>
