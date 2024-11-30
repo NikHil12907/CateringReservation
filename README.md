@@ -82,7 +82,7 @@ To get this project up and running locally, follow these steps:
 
 - **Django**: Python web framework for backend development.
 - **Tailwind CSS**: Utility-first CSS framework for styling.
-- **SQLite** (or PostgreSQL): Database for storing user data, products, and orders.
+- **SQLite**: Database for storing user data, products, and orders.
 
 ---
 
